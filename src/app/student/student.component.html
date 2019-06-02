@@ -1,0 +1,30 @@
+<h1 class="h1">From student page html</h1>
+<h1><input [value]="student.firstName" #inputFirstName (keyup.enter)="changeFirstName(inputFirstName.value)" type="text"></h1>
+<h1 >First Name is : {{student.firstName}} </h1>
+<h1>Last Name is : {{student.lastName}}</h1>
+<h1><input [(ngModel)]="student.lastName" type="text"></h1>
+<h1>Full Name is : {{getFullName()}}</h1>
+<h1>{{5*3}}</h1>
+<h1><button (click)="changeFirstName('sss')">Change First Name</button></h1>
+<h1 class="h1" [class.red-color]="student.age>=30"  [class.green-color]="student.age<30">Your Age is : {{student.age}}</h1>
+<h1 [ngClass]="{'red-color': student.age>=30,'h1':student.age<30,'green-color':student.age<30}">Your Age is {{student.age}}</h1>
+<!-- <h1 [ngStyle]="{'property': expression}"></h1> -->
+<h1>
+    <img src="{{student.image}}">
+</h1>
+<h2 *ngIf="student.age>30;else other">Sorry your age above 30</h2>
+
+<ng-template #other>
+    <h2>good , your age </h2>
+</ng-template>
+
+<h2 [hidden]="student.age<30">Sorry your age above 30</h2>
+
+<button (click)="increaseAge()">Increase</button>
+<br>
+<button (click)="decreaseAge()">decreaseAge</button>
+<h1>
+    <ul>
+        <li [class.red-color]="isEven" *ngFor="let course of courses;let i=index;let isEven=odd">{{i+1}}-{{course}}</li>
+    </ul>
+</h1>

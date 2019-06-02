@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="card" >
+        <div class="card-header">
+          {{date | date:'dd-MM-yyyy'}}
+          {{name}}`s Tasks <span [class.bg-danger]="getPendingTasksCount()>3">{{getPendingTasksCount()}}</span>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <input type="text" #inputTitle (keyup.enter)="add(inputTitle.value);inputTitle.value=''" class="form-control" placeholder="your task">
+            </div>
+            <div class="col-md-4"><button class="btn  btn-primary" (click)="add(inputTitle.value)">Add</button></div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="tasks.length==0">
+                <td colspan="4">
+                  No Tasks found
+                </td>
+              </tr>
+              <tr *ngFor="let task of tasks;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td [class.done-task]="task.Done"><a [routerLink]="['/details',task.ID]" routerLinkActive="router-link-active" >{{task.ID}}- {{task.Title | uppercase | maxLength:3}}</a>   </td>
+                <td><input type="checkbox" (change)="update(task)" [checked]="task.Done" class="form-check-input" > </td>
+                <td><button (click)="delete(i)" class="btn btn-danger">Delete</button> </td>
+              </tr>
+              
+            </tbody>
+          </table>
+      </div>
+</div>

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+.h1{
+    font-style: italic;
+
+}
+.red-color{
+    color: red;
+}
+.green-color{
+    color: green;
+}
+.done-task
+{
+    text-decoration-line: line-through;
+}
